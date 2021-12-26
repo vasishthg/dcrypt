@@ -7,14 +7,98 @@
     <title>Document</title>
 </head>
 <body>
-    {% if current_user %}
-    <img src="{{current_user.avatar_url}}" style="max-width: 2em; border-radius: 50%;">
-        <p>Logged in {{current_user.username}}#{{current_user.discriminator}}</p>
-        <p>ID: {{current_user.id}}</p>
-        <a href="/logout"><button>Logout</button></a>
-
-    {% else %}
-    <a href="{{oauth_url}}"><button>Login with discord</button></a>
-    {% endif %}
+    <div class="preloader"><h1 style="color: white;">d<span style="color: red;">Crypt</span></h1>
+        <div class="loader"></div>
+    </div>
+    
+    <h1 style="color: white; margin-left: 0.2em;">d<span style="color: red;">Crypt</span>
+        <span>
+            {% if current_user %}
+            <img src="{{current_user.avatar_url}}" style="max-width: 2em; border-radius: 50%;">
+                <p>Logged in {{current_user.username}}#{{current_user.discriminator}}</p>
+                <p>ID: {{current_user.id}}</p>
+                <a href="/logout"><button>Logout</button></a>
+        
+            {% else %}
+            <a href="{{oauth_url}}"><button class="appbtn">Login with discord</button></a>
+            {% endif %}
+        </span>
+    </h1>
+    <h1 style="color: white; font-size: 5em; text-align: center;">dCrypt <span style="color: red;">21</span></h1>
+   
+    
+    
 </body>
 </html>
+<style>
+    @font-face {
+    font-family: 'Squareboi';
+    src: url(https://vasishthg.github.io/ncrypt21/heheboi.ttf);
+}
+body{
+    font-family: 'Squareboi';
+    background-color: #111111;
+    overflow: hidden;
+}
+.preloader{
+    font-size: 7em;
+    text-align: center;
+    animation: slideup 1s 1;
+    animation-fill-mode: forwards;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: fixed;
+    margin:auto;
+    opacity: 1;
+    background: #111111;
+}
+@keyframes slideup{
+    0%{
+        
+        margin-top: 4em;
+    }
+    100%{
+        margin-top: 0.3em;
+        
+    }
+    
+}
+.loader {
+    border: 2px solid #ffffff; 
+    border-top: 2px solid #ff0000; 
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    left: 6.3em;
+    z-index: 1;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .appbtn{
+      background: red;
+      border: none;
+      width: 160px;
+      height: 40px;
+      border-radius: 30px;
+      font-family: 'Squareboi';
+      text-align: center;
+      font-size: 0.5em;
+      float: right;
+      color: white;
+  }
+</style>
+<script>
+    var delaylol = 1500;
+var anotherdelaylol = 1500;
+window.onload =setTimeout(function(){
+     //hide the preloader
+     document.querySelector(".preloader").style.display = "none";
+     document.querySelector(".preloader").style.background = "none";
+}, delaylol);
+</script>
