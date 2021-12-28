@@ -5,5 +5,5 @@ name = "pypi"
 
 [packages]
 flask=2.0.2
-zenora
+zenora=0.0.34
 [dev-packages]
