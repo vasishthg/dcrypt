@@ -4,6 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask=2.0.2
-zenora=0.0.34
+Zenora==0.0.2
+Werkzeug==2.0.2
+itsdangerous==2.0.1
+Jinja2==3.0.3
+Flask==2.0.2
 [dev-packages]
