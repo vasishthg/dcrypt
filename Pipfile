@@ -4,6 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask
+flask=2.0.2
 zenora
 [dev-packages]
