@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>User Profile | dCrypt</title>
+</head>
+<body>
+    <div class="preloader"><h1 class="preloadertxt" style="color: white;">d<span style="color: red;">Crypt</span></h1>
+        <div class="loader"></div>
+    </div>  
+    <center><img src="{{current_user.avatar_url}}" class="dropbtn" style="max-width: 5em; border-radius: 50%;" ></center>
+    <h1 style="text-align: center; padding-top: 1em;">Logged in as <span style="color:red;">{{current_user.username}}#{{current_user.discriminator}}</span></h1>
+                <h2 style="text-align: center;"><span style="color: red;">ID: </span>{{current_user.id}}</h2>
+                <button class="appbtn"><a href="/logout">Logout</a></button>
+</body>
+</html>
+<style>
+     @font-face {
+    font-family: 'Squareboi';
+    src: url(https://vasishthg.github.io/ncrypt21/heheboi.ttf);
+}
+    body{
+        background: #111111;
+        font-family: 'Squareboi';
+        color: white;
+    }
+    .dropbtn{
+        margin-top: 1em;
+    }
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    a:visited{
+        text-decoration: none;
+    }
+    .preloader{
+    font-size: 7em;
+    text-align: center;
+    animation-fill-mode: forwards;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: fixed;
+    margin:auto;
+    opacity: 1;
+    background: #111111;
+}
+@keyframes slideup{
+    0%{
+        
+        margin-top: 4em;
+    }
+    100%{
+        margin-top: 0.7em;
+        
+    }
+    
+}
+.preloadertxt{
+    animation: slideup 1s 1;
+    animation-fill-mode: forwards;
+}
+.loader {
+    animation: slideup 1s 1;
+    animation-fill-mode: forwards;
+    border: 2px solid #ffffff; 
+    border-top: 2px solid #ff0000; 
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    left: 6.3em;
+    z-index: 1;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+    .appbtn{
+      background: red;
+      border: none;
+      width: 160px;
+      height: 40px;
+      border-radius: 30px;
+      font-family: 'Squareboi';
+      text-align: center;
+      font-size: 1em;
+      float: right;
+      color: white;
+      margin-right: 3em;
+      margin-top: 10em;
+  }
+</style>
+<script>
+     var delaylol = 1500;
+var anotherdelaylol = 1500;
+window.onload =setTimeout(function(){
+     //hide the preloader
+     document.querySelector(".preloader").style.display = "none";
+     document.querySelector(".preloader").style.background = "none";
+}, delaylol);
+</script>

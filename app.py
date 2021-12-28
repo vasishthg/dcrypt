@@ -4,6 +4,7 @@ from werkzeug.utils import redirect
 from zenora import APIClient
 from config import CLIENT_SECRET, OAUTH_URL, REDIRECT_URI, TOKEN
 
+
 app=Flask(__name__)
 app.config["SECRET_KEY"] = "verysus"
 client = APIClient(TOKEN, client_secret=CLIENT_SECRET)
@@ -29,6 +30,19 @@ def callback():
 def logout():
     session.clear()
     return redirect("/")
+@app.route("/user")
+def user():   
+    if 'token' in session:
+        bearer_client = APIClient(session.get('token'), bearer=True)
+        current_user = bearer_client.users.get_current_user()
+        return render_template("user.html", current_user=current_user)
+    
+@app.errorhandler(404)
+def invalid_route(e):
+    return render_template("404.html")
 
+@app.errorhandler(500)
+def invalid_route(e):
+    return render_template("500.html")
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)

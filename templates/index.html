@@ -4,20 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <title>dCrypt 21 | Home</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  </head>
 <body>
-    <div class="preloader"><h1 style="color: white;">d<span style="color: red;">Crypt</span></h1>
+    <div class="preloader"><h1 class="preloadertxt" style="color: white;">d<span style="color: red;">Crypt</span></h1>
         <div class="loader"></div>
     </div>
     
     <h1 style="color: white; margin-left: 0.2em;">d<span style="color: red;">Crypt</span>
         <span>
             {% if current_user %}
-            <img src="{{current_user.avatar_url}}" style="max-width: 2em; border-radius: 50%;">
-                <p>Logged in {{current_user.username}}#{{current_user.discriminator}}</p>
-                <p>ID: {{current_user.id}}</p>
-                <a href="/logout"><button>Logout</button></a>
+            <img src="{{current_user.avatar_url}}" class="dropbtn" style="max-width: 2.5em; border-radius: 50%; float: right;" onclick="myFunction()">
+            <div id="myDropdown" class="dropdown-content" style="float: right;">
+                <!-- <p>Logged in {{current_user.username}}#{{current_user.discriminator}}</p>
+                <p>ID: {{current_user.id}}</p> -->
+                <a href="/user">User Details</a>
+                <a href="/logout">Logout</a>
+                </div>
         
             {% else %}
             <a href="{{oauth_url}}"><button class="appbtn">Login with discord</button></a>
@@ -25,6 +29,7 @@
         </span>
     </h1>
     <h1 style="color: white; font-size: 5em; text-align: center;">dCrypt <span style="color: red;">21</span></h1>
+    <br>
    
     
     
@@ -40,10 +45,46 @@ body{
     background-color: #111111;
     overflow: hidden;
 }
+.dropbtn {
+ 
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  overflow: auto;
+  z-index: 1;
+  right: 1em;
+  top: 5.5em;
+  background: white;
+  border-radius: 0.3em;
+  font-size: 0.5em;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
 .preloader{
     font-size: 7em;
     text-align: center;
-    animation: slideup 1s 1;
     animation-fill-mode: forwards;
     width: 100%;
     height: 100%;
@@ -59,10 +100,14 @@ body{
         margin-top: 4em;
     }
     100%{
-        margin-top: 0.3em;
+        margin-top: 0.7em;
         
     }
     
+}
+.preloadertxt{
+  animation: slideup 1s 1;
+  animation-fill-mode: forwards;
 }
 .loader {
     border: 2px solid #ffffff; 
@@ -70,6 +115,9 @@ body{
     border-radius: 100%;
     width: 60px;
     height: 60px;
+    animation: slideup 1s 1;
+    animation-fill-mode: forwards;
+
     animation: spin 2s linear infinite;
     position: absolute;
     left: 6.3em;
@@ -101,4 +149,47 @@ window.onload =setTimeout(function(){
      document.querySelector(".preloader").style.display = "none";
      document.querySelector(".preloader").style.background = "none";
 }, delaylol);
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCB_QH2lxuj7mwAuMQ5Q2aBgKrtRd-6lSE",
+    authDomain: "hello-ee85e.firebaseapp.com",
+    projectId: "hello-ee85e",
+    storageBucket: "hello-ee85e.appspot.com",
+    messagingSenderId: "388071665276",
+    appId: "1:388071665276:web:294b41beabc670e21da3f9",
+    measurementId: "G-T56Z0Y1N2G"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+<script>
+  
 </script>
