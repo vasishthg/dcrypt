@@ -6,6 +6,3 @@ name = "pypi"
 [packages]
 [dev-packages]
 [requires]
-Zenora==0.0.2
-Werkzeug==2.0.2
-Flask==2.0.2
