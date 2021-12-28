@@ -1,1 +1,1 @@
-web: python flask os zenora app.py 
+web: python app.py 

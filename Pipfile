@@ -4,5 +4,15 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-
+flask
+zenora
+os
+config
+werkzeug.utils
 [dev-packages]
+
+flask
+zenora
+os
+config
+werkzeug.utils
